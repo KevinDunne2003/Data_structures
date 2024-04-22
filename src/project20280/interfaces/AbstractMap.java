@@ -47,6 +47,11 @@ public abstract class AbstractMap<K, V> implements Map<K, V> {
             return v;
         }
 
+        @Override
+        public int compareTo(Entry<K, V> o) {
+            return 0;
+        }
+
         // utilities not exposed as part of the Entry interface
         protected void setKey(K key) {
             k = key;

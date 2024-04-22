@@ -19,10 +19,10 @@ import java.util.Random;
  * to reflect changes within bucketPut and bucketRemove.
  */
 public abstract class AbstractHashMap<K, V> extends AbstractMap<K, V> {
-    private final int prime;                   // prime factor
-    private final long scale;
-    private final long shift;           // the shift and scaling factors
-    protected int n = 0;                 // number of entries in the dictionary
+    private int prime;                   // prime factor
+    private long scale;
+    private long shift;           // the shift and scaling factors
+    /*protected*/ int n = 0;                 // number of entries in the dictionary
     protected int capacity;              // length of the table
 
     /**
@@ -99,17 +99,20 @@ public abstract class AbstractHashMap<K, V> extends AbstractMap<K, V> {
     @Override
     public V put(K key, V value) {
         // TODO
-        return null;
+        if (n >= capacity / 2) {
+            resize(capacity * 2);
+        }
+        n++;
+        return bucketPut(hashValue(key), key, value);
     }
-
     // private utilities
-
     /**
      * Hash function applying MAD method to default hash code.
      */
     private int hashValue(K key) {
         // TODO
-        return 0;
+        int hash = key.hashCode();
+        return (int) (((hash * prime + scale) >> shift) % capacity);
     }
 
     /**
@@ -117,6 +120,15 @@ public abstract class AbstractHashMap<K, V> extends AbstractMap<K, V> {
      */
     private void resize(int newCap) {
         // TODO
+        capacity = newCap;
+        createTable();
+        for (int i = 0; i < capacity; i++) {
+            V value = bucketGet(i, null);
+            if (value != null) {
+                bucketRemove(i, null);
+                put(null, value);
+            }
+        }
     }
 
     // protected abstract methods to be implemented by subclasses

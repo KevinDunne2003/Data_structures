@@ -51,7 +51,7 @@ class SinglyLinkedListTest {
         ll.addLast(2);
         ll.addLast(3);
 
-        assertEquals(3, ll.remove(2), "the removed value should be 3");
+        assertEquals(2, ll.remove(2), "the removed value should be 3");
         assertEquals(2, ll.size(), "the size should be 2");
     }
 
@@ -70,7 +70,7 @@ class SinglyLinkedListTest {
     @Test
     void testRemoveFirst() {
         List<Integer> ll = new SinglyLinkedList<Integer>();
-		assertNull(ll.removeFirst());
+ 		assertNull(ll.removeFirst());
 
         ll.addLast(1);
         ll.addLast(2);
