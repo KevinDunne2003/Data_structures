@@ -22,8 +22,8 @@ public abstract class AbstractHashMap<K, V> extends AbstractMap<K, V> {
     private int prime;                   // prime factor
     private long scale;
     private long shift;           // the shift and scaling factors
-    /*protected*/ int n = 0;                 // number of entries in the dictionary
-    protected int capacity;              // length of the table
+    /*protected*/ int n = 0;      // number of entries in the dictionary
+    protected int capacity;       // length of the table
 
     /**
      * Creates a hash table with the given capacity and prime factor.

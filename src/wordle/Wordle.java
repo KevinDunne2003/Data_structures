@@ -1,4 +1,6 @@
-package wordle;
+/*package wordle;
+
+import project20280.hashtable.ChainHashMap;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -6,10 +8,13 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
+
 public class Wordle {
 
+    static ChainHashMap<Character,Integer> p = new ChainHashMap<>();
     String fileName = "wordle/resources/dictionary.txt";
     //String fileName = "wordle/resources/extended-dictionary.txt";
+
     List<String> dictionary = null;
     final int num_guesses = 5;
     final long seed = 42;
@@ -24,6 +29,19 @@ public class Wordle {
     public static final String ANSI_GREY_BACKGROUND = "\u001B[100m";
 
     Wordle() {
+        String word;
+        char w;
+        for(int x = 0; x < dictionary.size(); x++) {
+            word = dictionary.get(x);
+            for (int y = 0; y < 5; y++) {
+                w = word.charAt(y);
+                if (p.get(w) == null) {
+                    p.put(w, 1);
+                } else {
+                    p.put(w, p.get(w) + 1);
+                }
+            }
+
 
         this.dictionary = readDictionary(fileName);
 
@@ -150,3 +168,4 @@ public class Wordle {
         return wordList;
     }
 }
+*/

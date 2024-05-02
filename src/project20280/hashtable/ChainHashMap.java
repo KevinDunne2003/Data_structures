@@ -94,7 +94,8 @@ public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
         // TODO
         UnsortedTableMap<K, V> bucket = table[h];
         if (bucket == null) {
-            return null;
+            //return null;
+            return bucket.remove(k);
         }
         return bucket.remove(k);
     }

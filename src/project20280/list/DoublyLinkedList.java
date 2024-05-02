@@ -3,6 +3,12 @@ package project20280.list;
 import project20280.interfaces.List;
 
 import java.util.Iterator;
+    /*
+    I changed some of the code to work for there being no dummy nodes on the head and for them to work when there is dummy nodes
+    I believe the conventional way is with dummy nodes and it should work for those aswell
+    Sorry if there is any confusion here
+     */
+
 
 public class DoublyLinkedList<E> implements List<E> {
 

@@ -44,6 +44,6 @@ public class LinkedStack<E> implements Stack<E> {
     }
 
     public String toString() {
-        return ll.toString2();
+        return ll.toString();
     }
 }
